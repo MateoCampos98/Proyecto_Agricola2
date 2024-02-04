@@ -8,7 +8,7 @@ setup(
         "Click",
     ],
     entry_points='''
-        [console_scripts]
-        pv=pv:cli
-    ''',
+[console_scripts]
+pv=pv:cli
+''',
 )
