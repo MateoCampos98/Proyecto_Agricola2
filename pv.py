@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import click
 
 from clients import commands as clients_commands
@@ -10,7 +11,7 @@ CLIENTS_TABLE = ".clients.csv"
 def cli(ctx):
     """An application to manage clients, inventory, sales and produce reports."""
     ctx.obj = {}
-    cli.obj ["clients_table"] = CLIENTS_TABLE
+    ctx.obj["clients_table"] = CLIENTS_TABLE
 
 
 cli.add_command(clients_commands.all)

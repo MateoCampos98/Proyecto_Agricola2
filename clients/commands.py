@@ -6,10 +6,11 @@ from clients.models import Client
 @click.group()
 def clients():
     """Manages the clients lifecycle"""
-    pass
+    #pass
 
 
 @clients.command()
+@click.pass_context
 @click.option("-n", "--name",
               type=str,
               prompt=True,
@@ -26,10 +27,10 @@ def clients():
               type=str,
               prompt=True,
               help="The client position")
-@click.pass_context
+#@click.pass_context
 def create(ctx, name, company, email, position):
     """Create un new client"""
-    client_service = ClientService(ctx.obj["client_table"])
+    client_service = ClientService(ctx.obj["clients_table"])
     client = Client(name, company, email, position)
     
     client_service.create_client(client)
@@ -45,7 +46,6 @@ def list(ctx):
 
     click.echo("ID  |  NAME  |  COMPANY  |  EMAIL  |  POSITION")
     click.echo("**********************************************")
-
     for client in clients:
         click.echo("{uid} | {name} | {company} | {email} | {position}".format(
               uid=client["uid"],
